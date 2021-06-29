@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>BMI 계산</title>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -15,24 +15,32 @@
 
 </head>
 <body>
-	<div>
-		<h1>날짜, 시간 링크</h1>
-			
-		<div class="mt-5">
-			<a href="/lesson02/quiz02_1.jsp?type=time" class="btn btn-primary">현재 시간 확인</a>
-			
-			<a href="/lesson02/quiz02_1.jsp?type=date">
-			<button type="submit" class="btn btn-success">현재 날짜 확인</button>
-			</a>
+	<div class="container">
+		<h1>체격 조건 입력</h1>
+		<form method="get" action="/lesson02/quiz03_1.jsp">
+			<div class="form-group d-flex">
+				<label for="height">
+					<input type="text" class="form-control" id="height" name="height" placeholder="키입력">
+				</label>
+				<span class="ml-2 mt-3">cm</span>
+				
+				<label for="weight">
+					<input type="text" class="form-control" id="weight" name="weight" placeholder="체중 입력">
+				</label>
+				<span class="ml-2 mt-3">kg</span>
+				
+				<input type="submit" class="btn btn-info ml-3" value="계산"></input>
+				
+			</div>
 		
-		</div>
 		
-		<%-- Request --%>
-	
+		
+		
+		</form>
 	</div>
 
 
-	
+
 
 </body>
 </html>

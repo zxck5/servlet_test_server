@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>BMI 계산</title>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -15,23 +15,47 @@
 
 </head>
 <body>
-	<div>
-		<h1>날짜, 시간 링크</h1>
-			
-		<div class="mt-5">
-			<a href="/lesson02/quiz02_1.jsp?type=time" class="btn btn-primary">현재 시간 확인</a>
-			
-			<a href="/lesson02/quiz02_1.jsp?type=date">
-			<button type="submit" class="btn btn-success">현재 날짜 확인</button>
-			</a>
+	<%! double getBmi(String height, String weight) {
+		int height1 = Integer.parseInt(height);
+		int weight1 = Integer.parseInt(weight);
+		double BMI = weight1  / ((height1 / 100.0) * (height1 / 100.0));
+		return BMI ;
+	} %>
+
+
+
+
+	<%
+		String height = request.getParameter("height");
+		String weight = request.getParameter("weight");
 		
+		String status = null ;
+		double bmi = getBmi(height,weight);
+		if (bmi <= 20) {
+			status = "저체중";
+		} else if (bmi <=25) {
+			status="정상";
+		} else if (bmi <= 30) {
+			status="과체중";
+		} else if (bmi>30){
+			status="비만";
+		}
+	
+	%>
+	
+	<div class="container">
+		<h2>BMI 측정 결과</h2>
+		<div class="display-4">당신은 <span class="text-info"><%=status %> </span> 입니다</div>
+		<div>
+			BMI 수치 : <%=bmi %>
 		</div>
 		
-		<%-- Request --%>
-	
+		
 	</div>
-
-
+	
+	
+	
+	
 	
 
 </body>

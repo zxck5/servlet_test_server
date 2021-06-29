@@ -15,24 +15,27 @@
 
 </head>
 <body>
-	<div>
-		<h1>날짜, 시간 링크</h1>
+	<div class="container">
+		<h1>사칙 연산 계산기</h1>
+		<form method="post" action="/lesson02/quiz04_1.jsp">
+			<div class=d-flex>
+				<input type="text" class="col-3 form-control" name="num1" id="num1">
+				<select name = "operator">
+					<option value="add">더하기</option>
+					<option value="subtract">빼기</option>
+					<option value="multiply">곱하기</option>
+					<option value="divide">나누기</option>
+				</select>
+				<input type="text" class="col-3 form-control" name="num2" id="num2">
+				<input type="submit" class="btn btn-success" value="계산하기">
+			</div>
 			
-		<div class="mt-5">
-			<a href="/lesson02/quiz02_1.jsp?type=time" class="btn btn-primary">현재 시간 확인</a>
 			
-			<a href="/lesson02/quiz02_1.jsp?type=date">
-			<button type="submit" class="btn btn-success">현재 날짜 확인</button>
-			</a>
+			
 		
-		</div>
-		
-		<%-- Request --%>
-	
+		</form>
 	</div>
 
-
-	
 
 </body>
 </html>

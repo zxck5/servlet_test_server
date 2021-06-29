@@ -17,27 +17,33 @@
 
 	<%-- Response(서버) --%>
 	
-	<% if (request.getParameter("time") != null) {
-		String time = instance.
+	<% 
+		String type= request.getParameter("type");
+
+
+		SimpleDateFormat sdf = null;
+
+		Date now = new Date();
+
 		
-		
-	} else if (request.getParameter("date") != null) {
-		
-	}
+
+
 	
 	
-	
+		if (type.equals("time")) {
+			sdf = new SimpleDateFormat("현재 시간은 HH시 mm분 ss초입니다.");
+		} else if (type.equals("date")) {
+			sdf = new SimpleDateFormat("현재 시간은 yyyy년 MM월 dd일입니다.");
+		}
+		String nowString = sdf.format(now);
 	
 	%>
 	
-	<strong>시간</strong>
-	<%= request.getParameter("time") %>
-	<br>
+	<%-- server: 시간 또는 날짜를 출력 --%>
+	<div class="container">
+		<div class=display-3"><%=nowString %></div>
+	</div>
 	
-	
-	
-	<strong>날짜</strong>
-	<%= request.getParameter("date") %>
 	
 
 </body>
