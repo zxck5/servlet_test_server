@@ -9,6 +9,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
 </head>
 <body>
 	<%
@@ -54,41 +62,53 @@
 		  <% // while문
 		  
 		  
+			 // 향상된 for문을 사용하는게 더 효율적이다.
 		  for (int i = 0; i < list.size(); i ++) {
 			 String menuName = null;
 			 String store = null;
 			 double point = 0;
+			 int check = -11;
 			 
 			 
-			 String b = (String) list.get(i).get("menu");
-			  if (menu.equals(b)) {
+			 //String b = (String) list.get(i).get("menu");
+			  if (menu.equals(list.get(i).get("menu"))) {
+				  double a = (double) list.get(i).get("point");
 				  if (exception != null) {
-					  double a = (double) list.get(i).get("point");
-					  if (a >= 4.0) {
-						 menuName = (String) list.get(i).get("menu");
+					  if (a > 4.0) {
+						 check = 1; 
+						 store = (String) list.get(i).get("name");
 						 point = a; 
+						 menuName = (String) list.get(i).get("menu");
 						 
 						  
 					  } 
 				  } else {
 					  
+					  	check = 1;
+					  	store = (String) list.get(i).get("name");
+						point = a; 
+						menuName = (String) list.get(i).get("menu");
+						  
+					  
 				  }
 				  
 			  }
-		  
-		  
+		 	if (check == 1) {
+			  
 		  %>
-		 
+		 		
+		 	
 		  
 		    <tr>
-		      <th scope="row"><%= (i+1) %></th>
-		      <th scope="row"><%= (i+1) %></th>
-		      <th scope="row"><%= (i+1) %></th>
-		      <td><%=  %> </td>
+		      <th scope="row"><%= menuName %></th>
+		      <td><%= store %> </td>
+		      <td><%= point %> </td>
+		      
 		    </tr>
 		   
 		  </tbody>
 		  <% 
+		 	}
 		  }
 		  %>
 		</table>		

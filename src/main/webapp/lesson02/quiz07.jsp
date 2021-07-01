@@ -14,14 +14,15 @@
 </head>
 <body>
 	<div class="container">
+		
 		<h1 class="text-center">메뉴 검색</h1>
 		
 		
-		<form method="post" action="/lesson02/quiz07.jsp">
-			<div class="form-group">
-				<input type="text" placeholder="치킨" name="menu">
-				<label for="exc">4점 이하 제외</label>
-				<input type="checkbox" id="exc" name="exception">
+		<form method="post" action="/lesson02/quiz07_1.jsp">
+			<div class="d-flex">
+				<input type="text" placeholder="치킨" name="menu" class="form-control col-3">
+				<label class="ml-2 mt-2" for="exc">4점 이하 제외</label>
+				<input type="checkbox" id="exc" name="exception" value="true" class="ml-2 mt-3">
 			</div>
 			<input type="submit" class="btn btn-success" value="검색">
 		</form>
