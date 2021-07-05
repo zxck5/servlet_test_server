@@ -4,6 +4,7 @@
 <%@ page import="java.util.ArrayList" %>    
 <%@ page import="java.util.Map" %>    
 <%@ page import="java.util.HashMap" %>    
+
     
     
 <%
@@ -85,59 +86,48 @@
     musicInfo.put("lyricist", "아이유");
     musicList.add(musicInfo);
 %>    
-    
-    
-    
+
 <%
-String songTitle = request.getParameter("songTitle");
+	String songTitle = request.getParameter("songTitle"); 
+	
 %>
     
-<section class="contents bg-info">
-	<div>
-		<%= artistInfo.get("name")  %><br>
-		<%= artistInfo.get("debute")  %><br>
-		<%= artistInfo.get("agency")  %><br>
-		<img src="<%= artistInfo.get("photo")%>" alt="사진" height=100px></img>
-	</div>
-	
-	<table class="table text-center">
-		<thead>
-			<tr>
-				<th>no</th>
-				<th>제목</th>
-				<th>엘범</th>
-			
-			</tr>
+<div>
+
+
+<h3>곡 정보</h3>
+
+<%
+	for (Map<String, Object> items : musicList) {
 		
-		</thead>
-		
-		<tbody>
-		
-			<%//반복문 
-				int i = 0 ;
-				for (Map<String, Object> musics  : musicList) {
-				i += 1;
-			
+		if (songTitle.equals((String)items.get("title"))) {
 			%>
-			<tr>
-				<td><%= i %></td>
-				<td><a href="quiz02.jsp?songTitle=<%=musics.get("title")%>"><%= musics.get("title") %></a></td>
-				<td><%=musics.get("album") %></td>
 			
-			</tr>
+			
+			<img src="<%=items.get("thumbnail")%>" alt="썸네일" height=100px></img>
+			<h2><%= items.get("title") %></h2>
+			<%= items.get("singer")%><br>
+			앨범<%= items.get("album") %><br>
+			<% int a = (int)items.get("time");
+				int minute = a / 60;
+				int seconds = a % 60;
+			%>
+			재생 시간 <%= minute + ":" + seconds %><br>
+			
+			작곡가 <%= items.get("composer") %><br>
+			작사가 <%= items.get("lyricist") %><br>
+			
+			
 			<%
-				} 
-			
-			
-			%>
-		</tbody>
-	
-	</table>
-	
-	
-	
-	
-	
-	
-			
-</section>
+		}
+	}
+%>
+
+<h3>가사</h3>
+가사 정보 없음
+
+
+<form method="get" action="quiz02.jsp">
+	<button type="submit" class="btn">뒤로가기</button>
+</form>
+</div>

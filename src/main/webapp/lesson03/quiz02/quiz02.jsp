@@ -15,11 +15,32 @@
 
 
 </head>
+<%
+	String songTitle = request.getParameter("songTitle"); 
+%>
+
+
+
 <body>
 	<div id="wrap">
 		<jsp:include page="header.jsp"/>
 		<jsp:include page="menu.jsp"/>
-		<jsp:include page="contents.jsp"/>
+		
+		<% 
+			if (songTitle == null) {
+		%>
+				<jsp:include page="contents.jsp"/>
+		<%
+			} else {
+				%>
+				<jsp:include page="contents2.jsp"/>
+				
+				
+				
+		<%
+			}
+		%>
+		
 		<jsp:include page="footer.jsp"/>
 		
 		

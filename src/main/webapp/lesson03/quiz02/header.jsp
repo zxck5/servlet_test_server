@@ -6,7 +6,7 @@
 		
 		<form method="get" action="quiz02.jsp">
 			<div class="ml-4 form-group">
-				<input type="text" class="form-control">
+				<input type="text" class="form-control" name="songTitle">
 				<button type="submit" class="btn btn-info">검색</button>
 			</div>
 		
