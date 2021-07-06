@@ -1,12 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.List" %>    
-<%@ page import="java.util.ArrayList" %>    
-<%@ page import="java.util.Map" %>    
-<%@ page import="java.util.HashMap" %>    
-
-    
-    
+<%@ page import="java.util.Map" %>
+<%@ page import="java.util.HashMap" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <%
 // 아티스트 정보 
 
@@ -14,7 +11,7 @@
     artistInfo.put("name", "아이유");
     artistInfo.put("debute", 2008);
     artistInfo.put("agency", "EDAM엔터테인먼트");
-    artistInfo.put("photo", "https://w.namu.la/s/3ca92265fffe4dd38a729df3df7dd41ea3ef12b72383958c8fd0bea79ffaa0331810fb8bea8ba09156d69e5f792eef522dd8eb932389ed972ff233c2c9adb34fc92d9ebceb03cdd9ae4ff0093f88e0e7bbe21d3251555878b233fa2a5f6af14544c8dd26f4cb608d0b0101c91fc37dce");
+    artistInfo.put("photo", "https://pbs.twimg.com/profile_images/1374979417915547648/vKspl9Et_400x400.jpg");
 
 
 // 아이유 노래 리스트 
@@ -86,49 +83,45 @@
     musicInfo.put("lyricist", "아이유");
     musicList.add(musicInfo);
 %>    
-
-<%
-	String songTitle = request.getParameter("songTitle"); 
-	
-%>
     
-<div>
+<section class="contents">
+	<%--아티스트 정보 영역 --%>
+	<div class="singer-info d-flex mt-4 border border-success p-3">
+		<div class="singer-photo mr-4">
+			<img src="<%=artistInfo.get("photo") %>" alt="가수 이미지" height="150">
+		</div>
+		<div class="singer-info">
+			<h3><%=artistInfo.get("name") %></h3>
+			<div><%=artistInfo.get("agency") %></div>
+			<div><%=artistInfo.get("debute") %></div>
+		</div>
+	</div>
+	<%--곡 목록 영역 --%>
+	<div class="music-list mt-3">
+		<h4>곡 목록</h4>
+		<table class="table text-center">
+			<thead>
+				<tr>
+					<th>no</th>
+					<th>제목</th>
+					<th>앨범</th>
+				</tr>
+			</thead>
+			<tbody>
+				<%
+					for (Map<String, Object> info :musicList) {
+				%>
+				<tr>
+					<td><%=info.get("id") %></td>
+					<td><a href="info_template.jsp?id=<%=info.get("id")%>"><%=info.get("title")%></a></td>
+					<td><%=info.get("album") %></td>
+				</tr>
+				<%
+					}
+				%>
+				
+			</tbody>
+		</table>
+	</div>
 
-
-<h3>곡 정보</h3>
-
-<%
-	for (Map<String, Object> items : musicList) {
-		
-		if (songTitle.equals((String)items.get("title"))) {
-			%>
-			
-			
-			<img src="<%=items.get("thumbnail")%>" alt="썸네일" height=100px></img>
-			<h2><%= items.get("title") %></h2>
-			<%= items.get("singer")%><br>
-			앨범<%= items.get("album") %><br>
-			<% int a = (int)items.get("time");
-				int minute = a / 60;
-				int seconds = a % 60;
-			%>
-			재생 시간 <%= minute + ":" + seconds %><br>
-			
-			작곡가 <%= items.get("composer") %><br>
-			작사가 <%= items.get("lyricist") %><br>
-			<%= songTitle  %>
-			
-			
-			<%
-		}
-	}
-%>
-
-<h3>가사</h3>
-가사 정보 없음
-
-
-<form method="get" action="quiz02.jsp">
-	<button type="submit" class="btn">뒤로가기</button>
-</form>
-</div>
+</section>
