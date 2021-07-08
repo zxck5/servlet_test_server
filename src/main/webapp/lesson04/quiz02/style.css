@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+#wrap {margin:auto; width:1000px; height: 1000px;}
+
+header {height: 150px;}
+
+.list_content {height: 700px;}
+
+footer {height:100px};
