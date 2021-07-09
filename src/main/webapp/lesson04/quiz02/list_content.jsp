@@ -7,21 +7,46 @@
 	MysqlService mysqlService = MysqlService.getInstance();
 	mysqlService.connection();	
 	
-	String query_seller = "select * from `seller`";
-	String query_usedgoods = "select * from `used_goods`";
+	String query = "select A.*, B.* from `seller` AS A inner join `used_goods` AS B on A.id = B.sellerId";
 	
-	ResultSet resultSet = mysqlService.select(query_seller);
+	
+	ResultSet resultSet = mysqlService.select(query);
 
-
+	
 %>
 
 
 <section class="list_content">
-	<table class="table">
+	<%
+		int i = 0;
+		while(true) {
+			if (resultSet.next() == false) {
+				break;
+			}
+			
+			//if (i % 3 != 0) {
+			
+				
+			%>
+				
+				<%=resultSet.getString("title") %>
+				<%=resultSet.getInt("price") + "원" %>
+				<%=resultSet.getString("nickname") %>
+				
+			<%
+			//}
+			
+			i += 1;
+			if (i % 3 == 0) {
+				%>
+				<br>
+				<%
+			}
+			//System.out.println(i);
 		
+		}
 		
-		
-	</table>
+	%>
 	
 	
 </section>

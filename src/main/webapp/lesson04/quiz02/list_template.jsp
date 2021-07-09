@@ -24,6 +24,7 @@
 		<jsp:include page="header.jsp"/>
 		<jsp:include page="menu.jsp"/>
 		<jsp:include page="list_content.jsp"/>
+		
 		<hr>
 		<jsp:include page="footer.jsp"/>
 	
